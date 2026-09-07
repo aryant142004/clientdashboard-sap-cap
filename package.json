@@ -1,0 +1,54 @@
+{
+  "name": "ClientDashboard",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/connectivity": "^4.9.1",
+    "@sap-cloud-sdk/http-client": "^4.9.1",
+    "@sap-cloud-sdk/resilience": "^4.9.1",
+    "@sap-cloud-sdk/util": "^4.9.1",
+    "@sap/cds": "^9",
+    "axios": "^1.20.0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4",
+    "@sap/cds-dk": "^9",
+    "@sap/dev-cap-tools": "^1.31.0",
+    "cds-plugin-ui5": "^0.17.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-client_dashboard-ui": "cds watch --open com.client.dashboard.clientdashboardui/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/client_dashboard-ui"
+  ],
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "sqlite.db"
+        }
+      },
+      "workflow-service": {
+        "kind": "rest",
+        "credentials": {
+          "url": "https://spa-api-gateway-bpi-ap-prod.cfapps.ap21.hana.ondemand.com"
+        }
+      },
+      "[production]": {
+        "db": {
+          "kind": "hana"
+        },
+        "auth": {
+          "kind": "dummy"
+        }
+      }
+    }
+  }
+}
