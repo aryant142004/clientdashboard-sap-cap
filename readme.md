@@ -5,11 +5,13 @@
 
 ```mermaid
 flowchart LR
-    A[SAP Fiori UI<br/>/app] -->|OData V4 Submit| B[SAP CAP Service<br/>/srv]
-    B -->|Persist Milestone| C[(HANA / SQLite DB<br/>/db)]
-    B -->|Trigger Workflow API| D[SAP Build Process Automation<br/>/Milestone_Approval_Workflow]
-    D -->|Approval Task| E[SAP My Inbox<br/>Manager Action]
+    A["SAP Fiori UI (/app)"] -->|OData V4 Submit| B["SAP CAP Service (/srv)"]
+    B -->|Persist Milestone| C[("HANA / SQLite DB (/db)")]
+    B -->|Trigger Workflow API| D["SAP Build Process Automation"]
+    D -->|Approval Task| E["SAP My Inbox (Manager Action)"]
     E -->|Approved / Rejected Callback| B
+```
+
 
 A full-stack SAP enterprise application built to demonstrate real-world SAP Business Technology Platform (BTP) integration: a project milestone tracker with a live, multi-step approval workflow powered by SAP Build Process Automation.
 
