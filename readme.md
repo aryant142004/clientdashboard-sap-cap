@@ -1,5 +1,16 @@
 # ClientDashboard — SAP CAP + Fiori Milestone Approval System
 
+### Live Demo & End-to-End Architecture
+* **Video Walkthrough:** [Watch the Full Demo on LinkedIn](https://lnkd.in/p/gfEr2vcH)
+
+```mermaid
+flowchart LR
+    A[SAP Fiori UI<br/>/app] -->|OData V4 Submit| B[SAP CAP Service<br/>/srv]
+    B -->|Persist Milestone| C[(HANA / SQLite DB<br/>/db)]
+    B -->|Trigger Workflow API| D[SAP Build Process Automation<br/>/Milestone_Approval_Workflow]
+    D -->|Approval Task| E[SAP My Inbox<br/>Manager Action]
+    E -->|Approved / Rejected Callback| B
+
 A full-stack SAP enterprise application built to demonstrate real-world SAP Business Technology Platform (BTP) integration: a project milestone tracker with a live, multi-step approval workflow powered by SAP Build Process Automation.
 
 Built as a portfolio project to demonstrate hands-on SAP CAP, Fiori, and BTP integration skills.
